@@ -1,16 +1,14 @@
 
-function NavBar({ pokemonIndex, pokemonList, setPokemonIndex }) {
-  const previousPokemon = () => {
-    setPokemonIndex((pokemonIndex) => (pokemonIndex -1));
-  };
-    const nextPokemon = () => {
-      setPokemonIndex((pokemonIndex) => (pokemonIndex +1 ));
-    };
+function NavBar({ pokemonList, setPokemonIndex }) {
+console.log (pokemonList)
 
  return (
     <nav>
-      {pokemonIndex>0 ? <button onClick={previousPokemon}>Précédent</button> : <p></p>}
-      {pokemonIndex < pokemonList.length-1 ? <button onClick={nextPokemon}>Suivant</button> : <p></p>}
+       {pokemonList.map((pokemon, index) => (
+        <button key={index} onClick={() => setPokemonIndex(index)}>
+          {pokemon.name}
+        </button>
+      ))}
  </nav>
 )}
 
